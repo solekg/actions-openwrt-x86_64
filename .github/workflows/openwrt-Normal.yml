@@ -144,6 +144,7 @@ jobs:
         echo "密码：无" >> release.txt
         echo "编译源码：https://github.com/openwrt/openwrt" >> release.txt
         echo "主要插件：p1、2、op、lucky、mosdns、smartdns、TTYD、wol" >> release.txt
+        echo "- 与Openwrt-normal的差异：增加了p1、2、smartdns" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
