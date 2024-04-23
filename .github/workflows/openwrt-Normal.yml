@@ -18,7 +18,6 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: v23.05.3
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
@@ -49,6 +48,11 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+
+    - name: Get latest release
+      run: |
+        latest_release="$(curl -s https://github.com/openwrt/openwrt/tags | grep -Eo "v[0-9\.]+\-*r*c*[0-9]*.tar.gz" | sed -n '/[2-9][3-9]/p' | sed -n 1p | sed 's/.tar.gz//g' | sed 's/v//g')"
+        echo "REPO_BRANCH=${latest_release}" >> $GITHUB_ENV
 
     - name: Clone source code
       working-directory: /workdir
