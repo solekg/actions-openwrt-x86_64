@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt normal
+name: OpenWrt Normal
 
 on:
   repository_dispatch:
