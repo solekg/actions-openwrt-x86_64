@@ -137,7 +137,7 @@ jobs:
         echo "账号：root" >> release.txt
         echo "密码：无" >> release.txt
         echo "编译源码取：https://github.com/openwrt/openwrt" >> release.txt
-        echo "集成主要插件：passwall1、2、openclash、lucky、mosdns、smartdns、TTYD、wol..." >> release.txt
+        echo "集成主要插件：passwall1、2、openclash、lucky、mosdns、smartdns、TTYD、wol" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
