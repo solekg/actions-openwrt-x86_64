@@ -119,6 +119,7 @@ jobs:
       run: |
         cd openwrt/bin/targets/*/*
         rm -rf packages
+        echo "KERNEL=$(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')" >> $GITHUB_ENV
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
 
@@ -138,6 +139,7 @@ jobs:
         [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
         echo "X86_64 Openwrt-normal：" >> release.txt
         echo "tags：${{ env.REPO_BRANCH }}" >> release.txt
+        echo "内核版本：${{ env.KERNEL }}" >> release.txt
         echo "默认后台：192.168.50.1" >> release.txt
         echo "账号：root" >> release.txt
         echo "密码：无" >> release.txt
