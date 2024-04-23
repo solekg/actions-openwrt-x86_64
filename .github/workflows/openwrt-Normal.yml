@@ -134,7 +134,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d %H:%M") openwrt normal" >> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
         [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
         echo "X86_64 Openwrt-normal：" >> release.txt
@@ -153,7 +153,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
+        tag_name: ${{ steps.tag.outputs.release_tag }} openwrt normal ${{ env.REPO_BRANCH }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
