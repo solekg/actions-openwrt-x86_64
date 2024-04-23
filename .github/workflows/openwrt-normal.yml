@@ -132,8 +132,8 @@ jobs:
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
         [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
-        echo "X86_64 Openwrt：" >> release.txt
-        echo "默认系统后台：192.168.50.1" >> release.txt
+        echo "X86_64 Openwrt-normal：" >> release.txt
+        echo "默认后台：192.168.50.1" >> release.txt
         echo "账号：root" >> release.txt
         echo "密码：无" >> release.txt
         echo "编译源码取：https://github.com/openwrt/openwrt" >> release.txt
