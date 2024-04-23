@@ -18,7 +18,6 @@ on:
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: v23.05.3
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: jingjian.config
   DIY_P1_SH: diy-part1.sh
@@ -49,7 +48,12 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
-
+        
+    - name: Get latest release
+      run: |
+        latest_release="$(curl -s https://github.com/openwrt/openwrt/tags | grep -Eo "v[0-9\.]+\-*r*c*[0-9]*.tar.gz" | sed -n '/[2-9][3-9]/p' | sed -n 1p | sed 's/.tar.gz//g')"
+        echo "REPO_BRANCH=${latest_release}" >> $GITHUB_ENV
+        
     - name: Clone source code
       working-directory: /workdir
       run: |
@@ -129,7 +133,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y-%m-%d %H:%M Openwrt-simple $REPO_BRANCH")" >> $GITHUB_OUTPUT
+        echo "release_tag=$(date +"%Y.%m.%d %H:%M")" >> $GITHUB_OUTPUT
         touch release.txt
         [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
         echo "X86_64 Openwrt-simple：" >> release.txt
@@ -147,8 +151,16 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
+        tag_name: ${{ steps.tag.outputs.release_tag }}  Openwrt-simple ${{ env.REPO_BRANCH }}
+        body_path: |
+          X86_64 Openwrt-simple：
+          - 默认后台：192.168.50.1
+          - 账号：root
+          - 密码：无
+          - 编译源码：${{ env.REPO_URL }}
+          - 内核版本：${{ env.KERNEL }}
+          - 主要插件：op、lucky、mosdns、TTYD、wol
+          - 对比Openwrt-simple去掉了p1、2\smartdns   
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
