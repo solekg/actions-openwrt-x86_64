@@ -134,7 +134,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=$(date +"%Y.%m.%d %H:%M")-openwrt-simple-${{ env.REPO_BRANCH }}" >> $GITHUB_OUTPUT
+        echo "release_tag=Openwrt-Simple-${{ env.REPO_BRANCH }}-$(date +"%Y-%m-%d %H:%M")" >> $GITHUB_OUTPUT
         echo "status=success" >> $GITHUB_OUTPUT
         
     - name: Upload firmware to release
