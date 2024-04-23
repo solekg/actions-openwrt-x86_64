@@ -130,22 +130,6 @@ jobs:
         name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: Generate release tag
-      id: tag
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      run: |
-        echo "release_tag=$(date +"%Y.%m.%d %H:%M")" >> $GITHUB_OUTPUT
-        touch release.txt
-        [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
-        echo "X86_64 Openwrt-simple：" >> release.txt
-        echo "默认后台：192.168.50.1" >> release.txt
-        echo "账号：root" >> release.txt
-        echo "密码：无" >> release.txt
-        echo "编译源码：https://github.com/openwrt/openwrt" >> release.txt
-        echo "主要插件：op、lucky、mosdns、TTYD、wol" >> release.txt
-        echo "对比X86_64 Openwrt normal去掉了p1、2\smartdns" >> release.txt       
-        echo "status=success" >> $GITHUB_OUTPUT
-
     - name: Upload firmware to release
       uses: softprops/action-gh-release@master
       if: steps.tag.outputs.status == 'success' && !cancelled()
