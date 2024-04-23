@@ -133,11 +133,11 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        release_tag="$(date +"%Y-%m-%d") Openwrt-normal ${{ env.REPO_BRANCH }}"
-        echo "::set-output name=release_tag::$release_tag"
+        echo "release_tag=$(date +"%Y.%m.%d %H:%M" openwrt normal)" >> $GITHUB_OUTPUT
         touch release.txt
         [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
         echo "X86_64 Openwrt-normal：" >> release.txt
+        echo "tags：${{ env.REPO_BRANCH }}" >> release.txt
         echo "默认后台：192.168.50.1" >> release.txt
         echo "账号：root" >> release.txt
         echo "密码：无" >> release.txt
