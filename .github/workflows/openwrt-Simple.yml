@@ -134,9 +134,19 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "release_tag=Openwrt-Simple-${{ env.REPO_BRANCH }}-$(date +"%Y-%m-%d %H:%M")" >> $GITHUB_OUTPUT
+        echo "release_tag=Openwrt-Simple-${{ env.REPO_BRANCH }}"-$(date +"%Y.%m.%d") >> $GITHUB_OUTPUT
+        touch release.txt
+        [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
+        echo "X86_64 Openwrt-Simple：" >> release.txt
+        echo "- 内核版本：${{ env.KERNEL }}" >> release.txt
+        echo "- 默认后台：192.168.50.1" >> release.txt
+        echo "- 账号：root" >> release.txt
+        echo "- 密码：无" >> release.txt
+        echo "- 编译源码：https://github.com/openwrt/openwrt" >> release.txt
+        echo "- 主要插件：op、lucky、mosdns、TTYD、wol" >> release.txt
+        echo "- 与Openwrt-normal的差异：去掉了p1、2、smartdns" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
-        
+
     - name: Upload firmware to release
       uses: softprops/action-gh-release@master
       if: steps.tag.outputs.status == 'success' && !cancelled()
@@ -144,16 +154,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       with:
         tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: |
-          X86_64 Openwrt-simple：
-          - 默认后台：192.168.50.1
-          - 账号：root
-          - 密码：无
-          - 编译源码：${{ env.REPO_URL }}
-          - 内核版本：${{ env.KERNEL }}
-          - 主要插件：op、lucky、mosdns、TTYD、wol
-          - 对比Openwrt-normal去掉了p1、2\smartdns 
-          - [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})"
+        body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
