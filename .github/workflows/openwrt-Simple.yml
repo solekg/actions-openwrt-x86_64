@@ -151,7 +151,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}  Openwrt-simple ${{ env.REPO_BRANCH }}
+        tag_name: ${{ steps.tag.outputs.release_tag }} Openwrt-simple ${{ env.REPO_BRANCH }}
         body_path: |
           X86_64 Openwrt-simple：
           - 默认后台：192.168.50.1
@@ -160,7 +160,7 @@ jobs:
           - 编译源码：${{ env.REPO_URL }}
           - 内核版本：${{ env.KERNEL }}
           - 主要插件：op、lucky、mosdns、TTYD、wol
-          - 对比Openwrt-simple去掉了p1、2\smartdns   
+          - 对比Openwrt-normal去掉了p1、2\smartdns   
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
