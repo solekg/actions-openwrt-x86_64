@@ -137,7 +137,7 @@ jobs:
         echo "release_tag=Openwrt-Normal-${{ env.REPO_BRANCH }}"-$(date +"%Y.%m.%d") >> $GITHUB_OUTPUT
         touch release.txt
         [ ${UPLOAD_GOFILE} = true && ${{ steps.gofile.outputs.url }} ] && echo "🔗 [GoFile](${{ steps.gofile.outputs.url }})" >> release.txt
-        echo "- X86_64 Openwrt-Normal：" >> release.txt        
+        echo "- X86_64 Openwrt-Normal" >> release.txt        
         echo "- 编译源码：https://github.com/openwrt/openwrt" >> release.txt
         echo "- 内核版本：${{ env.KERNEL }}" >> release.txt
         echo "- 默认后台：192.168.50.201" >> release.txt
