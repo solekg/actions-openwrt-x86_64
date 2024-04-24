@@ -143,7 +143,7 @@ jobs:
         echo "- 默认后台：192.168.50.201" >> release.txt
         echo "- 账号：root" >> release.txt
         echo "- 密码：无" >> release.txt
-        echo "- 主要插件：p1、2、op、lucky、mosdns、smartdns、TTYD、wol" >> release.txt
+        echo "- 主要插件：op、lucky、mosdns、TTYD、wol" >> release.txt
         echo "- 与Openwrt-Normal的差异：去掉了p1、2、smartdns" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
