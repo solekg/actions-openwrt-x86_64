@@ -17,14 +17,19 @@ sed -i 's/192.168.1.1/192.168.50.201/g' package/base-files/files/bin/config_gene
 # rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,sing-box,smartdns}
 # rm -rf feeds/packages/utils/v2dat
 
+#smartdns
 rm -rf feeds/packages/net/smartdns/*
 git clone https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
 rm -rf feeds/packages/net/smartdns/.git
-
 rm -rf feeds/luci/applications/luci-app-smartdns/*
 git clone https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
 rm -rf feeds/luci/applications/luci-app-smartdns/.git
 
+#adguardhome
+rm -rf feeds/packages/net/adguardhome/*
+cp -r feeds/kenzo/adguardhome/* feeds/packages/net/adguardhome
+
+#golang
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
