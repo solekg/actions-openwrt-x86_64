@@ -33,6 +33,11 @@ cp -r feeds/kenzo/adguardhome/* feeds/packages/net/adguardhome
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
+#v2ray-geodata
+rm -rf feeds/packages/net/v2ray-geodata/*
+git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/net/v2ray-geodata/.git
+
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
