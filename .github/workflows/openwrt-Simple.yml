@@ -14,7 +14,7 @@ name: OpenWrt Simple
 
 on:
   repository_dispatch:
-     types: simple
+    types: OpenWrt simple
   workflow_dispatch:
 
 env:
