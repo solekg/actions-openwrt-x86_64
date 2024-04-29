@@ -14,7 +14,7 @@ name: OpenWrt ziyong
 
 on:
   repository_dispatch:
-    types: ziyong
+    types: zy
   workflow_dispatch:
 
 env:
