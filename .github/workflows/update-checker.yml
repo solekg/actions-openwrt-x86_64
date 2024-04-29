@@ -14,7 +14,6 @@ name: Update Checker
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
-  REPO_BRANCH: openwrt-23.05
 
 on:
   workflow_dispatch:
@@ -26,6 +25,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Get latest release
+      run: |
+        latest_release="$(curl -s https://github.com/openwrt/openwrt/tags | grep -Eo "v[0-9\.]+\-*r*c*[0-9]*.tar.gz" | sed -n '/[2-9][3-9]/p' | sed -n 1p | sed 's/.tar.gz//g')"
+        echo "REPO_BRANCH=${latest_release}" >> $GITHUB_ENV
 
     - name: Get Commit Hash
       id: getHash
