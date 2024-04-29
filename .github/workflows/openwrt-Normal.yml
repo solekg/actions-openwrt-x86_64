@@ -14,7 +14,7 @@ name: OpenWrt Normal
 
 on:
   repository_dispatch:
-      types: normal
+    types: OpenWrt normal
   workflow_dispatch:
 
 env:
