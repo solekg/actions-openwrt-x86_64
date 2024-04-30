@@ -38,7 +38,7 @@ jobs:
 
     - name: Compare Commit Hash
       id: cacheHash
-      uses: actions/cache@v3
+      uses: actions/cache@main
       with:
         path: .commitHash
         key: commitHash_${{ steps.getHash.outputs.commitHash }}
