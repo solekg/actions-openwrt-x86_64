@@ -47,18 +47,18 @@ mv tmp/clash files/etc/openclash/core >/dev/null 2>&1
 rm -rf tmp/clash.tar.gz >/dev/null 2>&1
 
 #openclash core clash_tun
-#curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz -o tmp/clash_tun.gz
-#tar xzvf tmp/clash_tun.gz -C tmp --transform='s/^clash/clash_tun/' >/dev/null 2>&1
-#chmod +x tmp/clash_tun >/dev/null 2>&1
-#mv tmp/clash_tun files/etc/openclash/core >/dev/null 2>&1
-#rm -rf tmp/clash_tun.gz >/dev/null 2>&1
+curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/premium/clash-linux-amd64-2023.08.17-13-gdcc8d87.gz -o tmp/clash_tun.gz
+tar xzvf tmp/clash_tun.gz -C tmp --transform='s/^clash/clash_tun/' >/dev/null 2>&1
+chmod +x tmp/clash_tun >/dev/null 2>&1
+mv tmp/clash_tun files/etc/openclash/core >/dev/null 2>&1
+rm -rf tmp/clash_tun.gz >/dev/null 2>&1
 
 #openclash core clash_meta
-#curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz -o tmp/clash_meta.tar.gz
-#tar xzvf tmp/clash_meta.gz -C tmp --transform='s/^clash/clash_meta/' >/dev/null 2>&1
-#chmod +x tmp/clash_meta >/dev/null 2>&1
-#mv tmp/clash_meta files/etc/openclash/core >/dev/null 2>&1
-#rm -rf tmp/clash_meta.tar.gz >/dev/null 2>&1
+curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz -o tmp/clash_meta.tar.gz
+tar xzvf tmp/clash_meta.gz -C tmp --transform='s/^clash/clash_meta/' >/dev/null 2>&1
+chmod +x tmp/clash_meta >/dev/null 2>&1
+mv tmp/clash_meta files/etc/openclash/core >/dev/null 2>&1
+rm -rf tmp/clash_meta.tar.gz >/dev/null 2>&1
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
