@@ -31,7 +31,7 @@ cp -r feeds/kenzo/adguardhome/* feeds/packages/net/adguardhome
 
 #golang
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 
 #v2ray-geodata
 rm -rf feeds/packages/net/v2ray-geodata/*
