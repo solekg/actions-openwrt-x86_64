@@ -38,6 +38,20 @@ rm -rf feeds/packages/net/v2ray-geodata/*
 git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/v2ray-geodata/.git
 
+# 创建OpenClash使用的clash二进制文件所在的路径
+#mkdir -p files/etc/openclash/core
+# 设置Clash下载地址变量
+# 从github上指定分支的文件中下载
+#OPENCLASH_MAIN_URL=$( curl -sL https://api.github.com/repos/vernesong/OpenClash/contents/dev/dev?ref=core | grep dev/clash-linux-amd64.tar.gz | awk -F '"' '{print $4}' | awk 'NR==4{print}' )
+#CLASH_TUN_URL=$( curl -sL https://api.github.com/repos/vernesong/OpenClash/contents/dev/premium?ref=core | grep premium/clash-linux-amd64-20 | awk -F '"' '{print $4}' | awk 'NR==4{print}' )
+#CLASH_META_URL=$( curl -sL https://api.github.com/repos/vernesong/OpenClash/contents/dev/meta?ref=core | grep meta/clash-linux-amd64.tar.gz | awk -F '"' '{print $4}' | awk 'NR==4{print}' )
+# 下载并解压OpenClash的执行文件
+#wget -qO- $OPENCLASH_MAIN_URL | tar xOvz > files/etc/openclash/core/clash
+#wget -qO- $CLASH_TUN_URL | gunzip -c > files/etc/openclash/core/clash_tun
+#wget -qO- $CLASH_META_URL | tar xOvz > files/etc/openclash/core/clash_meta
+# 给Clash二进制文件增加执行权限
+#chmod +x files/etc/openclash/core/clash*
+
 #openclash core clash
 curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-amd64.tar.gz -o tmp/clash.tar.gz
 tar zxvf tmp/clash.tar.gz -C tmp >/dev/null 2>&1
