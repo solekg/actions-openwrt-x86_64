@@ -12,8 +12,8 @@
 
 name: Update Checker
 
-env:
-  REPO_URL: https://github.com/openwrt/openwrt
+#env:
+#  REPO_URL: https://github.com/openwrt/openwrt
 
 on:
   workflow_dispatch:
