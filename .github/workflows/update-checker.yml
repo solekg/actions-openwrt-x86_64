@@ -15,9 +15,9 @@ name: Update Checker
 #env:
 #  REPO_URL: https://github.com/openwrt/openwrt
 
-on:
-  workflow_dispatch:
-  schedule:
+#on:
+#  workflow_dispatch:
+#  schedule:
     - cron: 0 */18 * * *
 
 jobs:
