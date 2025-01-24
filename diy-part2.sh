@@ -38,6 +38,10 @@ rm -rf feeds/packages/net/v2ray-geodata/*
 git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/v2ray-geodata/.git
 
+#v2ray-plugin 5.25退回5.17
+rm -rf package/feeds/small/v2ray-plugin/*
+git clone https://github.com/kenzok8/small/tree/82eac7940f75b6ed59523c728adca179ab001aaf/v2ray-plugin package/feeds/small/v2ray-plugin
+
 # 创建OpenClash使用的clash二进制文件所在的路径
 #mkdir -p files/etc/openclash/core
 # 设置Clash下载地址变量
