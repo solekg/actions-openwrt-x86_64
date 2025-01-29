@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: Update Checker
+#name: Update Checker
 
 #env:
 #  REPO_URL: https://github.com/openwrt/openwrt
@@ -18,7 +18,7 @@ name: Update Checker
 #on:
 #  workflow_dispatch:
 #  schedule:
-    - cron: 0 */18 * * *
+#    - cron: 0 */18 * * *
 
 jobs:
   check:
