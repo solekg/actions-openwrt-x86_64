@@ -39,7 +39,7 @@ git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodat
 rm -rf feeds/packages/net/v2ray-geodata/.git
 
 #v2ray-plugin 更改go_pkg源
-sed -i '25s/shadowsocks/teddysun/' feeds/small/v2ray-plugin/Makefile
+#sed -i '25s/shadowsocks/teddysun/' feeds/small/v2ray-plugin/Makefile
 
 # 创建OpenClash使用的clash二进制文件所在的路径
 #mkdir -p files/etc/openclash/core
