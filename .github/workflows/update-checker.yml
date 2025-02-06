@@ -10,13 +10,14 @@
 # See /LICENSE for more information.
 #
 
-#name: Update Checker
+name: Update Checker
 
-#env:
-#  REPO_URL: https://github.com/openwrt/openwrt
+env:
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
 
-#on:
-#  workflow_dispatch:
+on:
+  workflow_dispatch:
 #  schedule:
 #    - cron: 0 */18 * * *
 
@@ -25,10 +26,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Get latest release
-      run: |
-        latest_release="$(curl -s https://github.com/openwrt/openwrt/tags | grep -Eo "v[0-9\.]+\-*r*c*[0-9]*.tar.gz" | sed -n '/[2-9][3-9]/p' | sed -n 1p | sed 's/.tar.gz//g')"
-        echo "REPO_BRANCH=${latest_release}" >> $GITHUB_ENV
 
     - name: Get Commit Hash
       id: getHash
@@ -38,7 +35,7 @@ jobs:
 
     - name: Compare Commit Hash
       id: cacheHash
-      uses: actions/cache@main
+      uses: actions/cache@v3
       with:
         path: .commitHash
         key: commitHash_${{ steps.getHash.outputs.commitHash }}
@@ -50,13 +47,13 @@ jobs:
 
     - name: Trigger build
       if: steps.cacheHash.outputs.cache-hit != 'true'
-      uses: peter-evans/repository-dispatch@main
+      uses: peter-evans/repository-dispatch@v2
       with:
         token: ${{ github.token }}
-        event-type: OpenWrt ziyong,OpenWrt normal,OpenWrt simple
+        event-type: Source Code Update
 
     - name: Delete workflow runs
-      uses: Mattraks/delete-workflow-runs@main
+      uses: Mattraks/delete-workflow-runs@v2
       with:
         retain_days: 0
         keep_minimum_runs: 2
