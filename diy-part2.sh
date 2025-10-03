@@ -22,10 +22,7 @@ rm -rf feeds/luci/applications/luci-app-smartdns
 rm -rf feeds/packages/net/{adguardhome,mosdns,v2ray-geodata,smartdns}
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
-git clone https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
 git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodata
-#git clone https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
-#git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 #openclash core clash_meta
 curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz -o tmp/clash_meta.tar.gz
