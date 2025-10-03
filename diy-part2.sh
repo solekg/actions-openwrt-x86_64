@@ -19,7 +19,8 @@ sed -i 's/192.168.1.1/192.168.50.201/g' package/base-files/files/bin/config_gene
 # 移除要替换的包
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-smartdns
-rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/net/{adguardhome,mosdns,smartdns}
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
@@ -28,10 +29,7 @@ git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodat
 #git clone https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
-#cp -r feeds/kenzo/adguardhome/* feeds/packages/net/adguardhome
-
-#v2ray-geodata
-#rm -rf feeds/packages/net/v2ray-geodata/*
+cp -r feeds/kenzo/adguardhome/* feeds/packages/net/adguardhome
 
 #openclash core clash_meta
 curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz -o tmp/clash_meta.tar.gz
