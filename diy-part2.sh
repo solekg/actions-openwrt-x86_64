@@ -28,8 +28,6 @@ git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodat
 #git clone https://github.com/pymumu/openwrt-smartdns feeds/packages/net/smartdns
 #git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
-cp -r feeds/kenzo/adguardhome/* feeds/packages/net/adguardhome
-
 #openclash core clash_meta
 curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz -o tmp/clash_meta.tar.gz
 tar xzvf tmp/clash_meta.tar.gz -C tmp --transform='s/^clash/clash_meta/' >/dev/null 2>&1
