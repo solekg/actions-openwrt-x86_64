@@ -20,7 +20,6 @@ sed -i 's/192.168.1.1/192.168.50.201/g' package/base-files/files/bin/config_gene
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-smartdns
 rm -rf feeds/packages/net/{adguardhome,mosdns,v2ray-geodata,smartdns}
-rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 git clone https://github.com/pymumu/luci-app-smartdns feeds/luci/applications/luci-app-smartdns
