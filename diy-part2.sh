@@ -36,5 +36,3 @@ rm -rf tmp/clash_meta.tar.gz >/dev/null 2>&1
 
 # Modify hostname
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
-
-./scripts/feeds update -a
