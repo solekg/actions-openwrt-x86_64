@@ -25,11 +25,11 @@ git clone https://github.com/sbwml/packages_lang_golang feeds/packages/lang/gola
 git clone https://github.com/sbwml/v2ray-geodata feeds/packages/net/v2ray-geodata
 
 #openclash core clash_meta
-curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz -o tmp/clash_meta.tar.gz
-tar xzvf tmp/clash_meta.tar.gz -C tmp --transform='s/^clash/clash_meta/' >/dev/null 2>&1
-chmod +x tmp/clash_meta >/dev/null 2>&1
-mv tmp/clash_meta files/etc/openclash/core >/dev/null 2>&1
-rm -rf tmp/clash_meta.tar.gz >/dev/null 2>&1
+#curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-amd64.tar.gz -o tmp/clash_meta.tar.gz
+#tar xzvf tmp/clash_meta.tar.gz -C tmp --transform='s/^clash/clash_meta/' >/dev/null 2>&1
+#chmod +x tmp/clash_meta >/dev/null 2>&1
+#mv tmp/clash_meta files/etc/openclash/core >/dev/null 2>&1
+#rm -rf tmp/clash_meta.tar.gz >/dev/null 2>&1
 
 # Modify default theme
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
